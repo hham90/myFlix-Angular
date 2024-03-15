@@ -22,7 +22,7 @@ export class UserRegistrationService {
   }
   // user login endpoint call
   public userLogin(userDetails: any): Observable<any> {
-    return this.http.get(apiUrl + 'users', userDetails).pipe(
+    return this.http.post(apiUrl + 'login', userDetails).pipe(
     catchError(this.handleError)
     );
   }
@@ -82,9 +82,9 @@ export class UserRegistrationService {
     );
   }
   // get favorite movies for user endpoint call
-  getFavoriteMovie(FavoriteMovie: string, user: string): Observable<any> {
+  getFavoriteMovie(user: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'users/' + user + FavoriteMovie, {headers: new HttpHeaders(
+    return this.http.get(apiUrl + 'users/' + user, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -93,9 +93,9 @@ export class UserRegistrationService {
     );
   }
   // add favorite movie to user endpoint call
-  addFavoriteMovie(user: string, movieId: string): Observable<any> {
+  addFavoriteMovie(user: string, movie: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.put(apiUrl + 'users/' + user + 'movies' + movieId, {headers: new HttpHeaders(
+    return this.http.put(apiUrl + 'users/' + user + 'movies' + movie, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
