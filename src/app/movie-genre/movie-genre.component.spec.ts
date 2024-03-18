@@ -11,7 +11,7 @@ describe('MovieGenreComponent', () => {
       declarations: [MovieGenreComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(MovieGenreComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

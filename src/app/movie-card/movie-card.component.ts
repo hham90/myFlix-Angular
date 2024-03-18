@@ -38,10 +38,11 @@ getMovies(): void {
     });
   }
 getFavoriteMovies(): void {
-  this.user = this.fetchApiData.getUser("");
-  this.userData.FavoriteMovies = this.user.FavoriteMovies;
-  this.FavoriteMovies = this.user.FavoriteMovies;
-  console.log('Fav Movies in getFavMovie', this.FavoriteMovies);
+  this.fetchApiData.getUser().subscribe((resp: any) => {
+    this.user = resp;
+    this.userData.FavoriteMovies = this.user.FavoriteMovies;
+    this.FavoriteMovies = this.user.FavoriteMovies;
+  });
 }
 
   openDirectorDialog(name: string, bio: string, birth: string, death: string): void {
@@ -88,9 +89,8 @@ getFavoriteMovies(): void {
       : this.addFavoriteMovies(movie);
   }
   addFavoriteMovies(movie: any): void {
-    this.user = this.fetchApiData.getUser('');
     this.userData.Username = this.user.Username;
-    this.fetchApiData.addFavoriteMovie(this.user, movie).subscribe((result) => {
+    this.fetchApiData.addFavoriteMovie(this.user.Username, movie._id).subscribe((result) => {
       localStorage.setItem('user', JSON.stringify(result));
       this.getFavoriteMovies();
       this.snackBar.open('Movie has been added to your favorites!', 'OK', {
@@ -99,9 +99,8 @@ getFavoriteMovies(): void {
     });
   }
   deleteFavoriteMovies(movie: any): void {
-    this.user = this.fetchApiData.getUser('');
     this.userData.Username = this.user.Username;
-    this.fetchApiData.delFavoriteMovie(this.user, movie).subscribe((result) => {
+    this.fetchApiData.delFavoriteMovie(this.user.Username, movie).subscribe((result) => {
       localStorage.setItem('user', JSON.stringify(result));
       this.getFavoriteMovies();
       this.snackBar.open('Movie has been deleted from your favorites!', 'OK', {

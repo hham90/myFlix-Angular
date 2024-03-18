@@ -71,9 +71,10 @@ export class UserRegistrationService {
     );
   }
   // get user endpoint call
-  getUser(user: string): Observable<any> {
+  getUser(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'users/' + user, {headers: new HttpHeaders(
+    const user = JSON.parse(localStorage.getItem('user') || "{}")
+    return this.http.get(apiUrl + 'users/' + user.Username, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -95,7 +96,7 @@ export class UserRegistrationService {
   // add favorite movie to user endpoint call
   addFavoriteMovie(user: string, movie: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.put(apiUrl + 'users/' + user + 'movies' + movie, {headers: new HttpHeaders(
+    return this.http.post(apiUrl + 'users/' + user + '/movies/' + movie, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -128,7 +129,7 @@ export class UserRegistrationService {
   // delete movie from user favorite endpoint call
   delFavoriteMovie(user: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + 'users/' + user + 'movies' + movieId, {headers: new HttpHeaders(
+    return this.http.delete(apiUrl + 'users/' + user + '/movies/' + movieId, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
