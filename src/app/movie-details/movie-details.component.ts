@@ -3,20 +3,20 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 /**
  * @description Component representing the movie synopsis dialog.
- * @selector 'app-movie-synopsis'
- * @templateUrl './movie-synopsis.component.html'
- * @styleUrls ['./movie-synopsis.component.scss']
+ * @selector 'app-movie-details'
+ * @templateUrl './movie-details.component.html'
+ * @styleUrls ['./movie-details.component.scss']
  */
 @Component({
-  selector: 'app-movie-synopsis',
+  selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.scss']
 })
 export class MovieDetailsComponent implements OnInit {
 
   /**
-   * @constructor - Constructor for MovieSynopsisComponent.
-   * @param data - Data containing movie discription.
+   * @constructor - Constructor for Movie details component.
+   * @param data - Data containing movie description.
    */
   constructor(
     @Inject(MAT_DIALOG_DATA)

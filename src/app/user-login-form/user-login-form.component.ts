@@ -7,7 +7,11 @@ import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Router } from '@angular/router'
-
+/**
+ * @selector 'app-user-login-form'
+ * @templateUrl './user-login-form.component.html'
+ * @styleUrls ['./user-login-form.component.scss']
+ */
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
@@ -16,7 +20,13 @@ import { Router } from '@angular/router'
 export class UserLoginFormComponent implements OnInit {
 
   @Input() userData = { Username: '', Password: ''};
-
+/**
+ * @constructor
+ * @param {UserRegistrationService} fetchApiData
+ * @param {MatDialogRef} dialogRef
+ * @param {MatSnackBar} snackBar
+ * @param {Router} router
+ */
 constructor(
     public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -29,7 +39,6 @@ ngOnInit(): void {
 // This is the function responsible for sending the form inputs to the backend
 LoginUser(): void {
   this.fetchApiData.userLogin(this.userData).subscribe((result) => {
-// Logic for a successful user Login goes here! (To be implemented)
    localStorage.setItem('user', JSON.stringify(result.user));
    localStorage.setItem('token', result.token);
    this.dialogRef.close(); // This will close the modal on success!

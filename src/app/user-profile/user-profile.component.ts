@@ -1,6 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service'
 
+/**
+ * @description component for user profile
+ * @selector 'app-user-profile'
+ * @templateUrl './user-profile.component.html'
+ * @styleUrls ['./user-profile.component.scss']
+ */
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',

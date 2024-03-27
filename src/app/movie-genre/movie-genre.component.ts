@@ -2,10 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 /**
- * @description Component representing the genre info dialog.
- * @selector 'app-genre-info'
- * @templateUrl './genre-info.component.html'
- * @styleUrls ['./genre-info.component.scss']
+ * @description Component representing the movie genre dialog.
+ * @selector 'app-movie-genre'
+ * @templateUrl './movie-genre.component.html'
+ * @styleUrls ['./movie-genre.component.scss']
  */
 @Component({
   selector: 'app-movie-genre',
@@ -15,7 +15,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class MovieGenreComponent implements OnInit {
 
   /**
-   * @constructor - Constructor for GenreInfoComponent.
+   * @constructor - Constructor for movie genre component.
    * @param data - Data containing genre information.
    */
   constructor(
